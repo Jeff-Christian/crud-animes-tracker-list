@@ -6,8 +6,7 @@ function App() {
     <>
       <nav id="Navbar">
         <img src={logo} alt="Logo animes tracker" id="logo" />
-        <button id="add">Adicionar Novo</button>
-        <button id="login">Login</button>
+        <button class="login">Login</button>
       </nav>
     </>
   );

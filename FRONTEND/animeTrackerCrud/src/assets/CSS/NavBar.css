@@ -4,11 +4,35 @@
   height: 200px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 #logo {
-  height: 6em;
+  width: 240px;
+  height: 200px;
   padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+}
+
+.login {
+  width: 100px;
+  height: 90px;
+  border-radius: 100%;
+  border: 1px solid transparent;
+  padding: 20px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.login:hover {
+  border-color: #646cff;
+}
+
+.login:focus,
+.login:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
