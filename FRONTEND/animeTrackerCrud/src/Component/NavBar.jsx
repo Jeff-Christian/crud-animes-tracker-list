@@ -1,15 +1,11 @@
+import "../assets/CSS/NavBar.css";
+import logo from "../assets/Images/LOGO BRANCO.png";
+
 function App() {
   return (
     <>
-      <div>
-        <h1>Anime list</h1>
-      </div>
-      <nav>
-        <img
-          src="./assets/Images/LOGO BRANCO.png"
-          alt="Logo animes tracker"
-          id="logo"
-        />
+      <nav id="Navbar">
+        <img src={logo} alt="Logo animes tracker" id="logo" />
         <button id="add">Adicionar Novo</button>
         <button id="login">Login</button>
       </nav>

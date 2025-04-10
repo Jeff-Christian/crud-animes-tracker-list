@@ -1,0 +1,14 @@
+#Navbar {
+  background-color: #2e2699;
+  max-width: 1440px;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
