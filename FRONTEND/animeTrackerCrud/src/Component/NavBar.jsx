@@ -1,7 +1,7 @@
 import "../assets/CSS/NavBar.css";
 import logo from "../assets/Images/LOGO BRANCO.png";
 
-function App() {
+function Navbar() {
   return (
     <>
       <nav id="Navbar">
@@ -12,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default Navbar;
