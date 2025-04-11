@@ -6,7 +6,7 @@ function Navbar() {
     <>
       <nav id="Navbar">
         <img src={logo} alt="Logo animes tracker" id="logo" />
-        <button class="login">Login</button>
+        <button className="login">Login</button>
       </nav>
     </>
   );
