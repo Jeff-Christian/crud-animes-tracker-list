@@ -2,7 +2,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
   margin-top: 20px;
   width: 430px;
   margin: 20px;
@@ -45,4 +44,26 @@ input::placeholder {
   border-radius: 10px;
   border: none;
   cursor: pointer;
+}
+
+.image {
+  width: 390px;
+  height: 212px;
+  background-color: #d9d9d9;
+  margin-top: 10px;
+}
+
+.changes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  padding: 10px;
+}
+
+h3 {
+  width: 390px;
+  height: 40px;
+  background: linear-gradient(#4d40ff, #2e2699);
+  text-align: center;
+  margin: 10px;
 }
