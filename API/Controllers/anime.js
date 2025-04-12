@@ -30,7 +30,7 @@ export const addAnime = (req, res) => {
 };
 
 // metodo para atualizar os animes assistidos
-export const updateAnimes = (req, res) => {
+export const updateAnime = (req, res) => {
   const q =
     "UPDATE animes SET `AnimeName` = ?, `where` = ?, `Rating` = ?, `Date` = ? WHERE `id` = ?";
 
@@ -49,7 +49,7 @@ export const updateAnimes = (req, res) => {
 
 // metodo para deletar os animes já inseridos no backend
 
-export const deleteAnimes = (req, res) => {
+export const deleteAnime = (req, res) => {
   const q = "DELETE FROM animes WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
