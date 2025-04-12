@@ -46,3 +46,15 @@ export const updateAnimes = (req, res) => {
     return res.status(200).json("Anime atualizado com sucesso.");
   });
 };
+
+// metodo para deletar os animes já inseridos no backend
+
+export const deleteAnimes = (req, res) => {
+  const q = "DELETE FROM animes WHERE `id` = ?";
+
+  db.query(q, [req.params.id], (err) => {
+    if (err) return res.json(err);
+
+    return res.status(200).json("Anime deletado com sucesso.");
+  });
+};
