@@ -13,11 +13,11 @@ Uma aplicação full stack para registrar os animes assistidos, com informaçõe
 - Frontend: React.js + React Router DOM
 - Backend: Node.js + Express
 - Banco de Dados: MySQL
-- Deploy: (Adicionar quando estiver pronto)
+- Deploy: (Em breve atualizações)
 
 ## 📸 Preview
 
-(Adicionar aqui prints ou gifs da aplicação em funcionamento)
+(Em breve colocar imagens da aplicação com um resumo melhor)
 
 ## 📦 Como rodar localmente
 
