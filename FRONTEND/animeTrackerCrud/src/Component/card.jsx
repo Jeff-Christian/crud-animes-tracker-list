@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import axios from "axios";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 import "../assets/CSS/Cards.css";
 
 function Card({ getAnimes, onEdit, setOnEdit }) {
@@ -37,8 +37,8 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
           Rating: anime.Rating.value,
           Date: anime.Date.value,
         })
-        .then(({ data }) => toast.success(data))
-        .catch(({ data }) => toast.error(data));
+        .then(({ data }) => alert(data))
+        .catch(({ data }) => alert(data));
     } else {
       await axios
         .post("http://localhost:8800/", {
@@ -47,8 +47,8 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
           Rating: anime.Rating.value,
           Date: anime.Date.value,
         })
-        .then(({ data }) => toast.success(data))
-        .catch(({ data }) => toast.error(data));
+        .then(({ data }) => alert(data))
+        .catch(({ data }) => alert(data));
     }
 
     anime.AnimeName.value = "";
@@ -63,7 +63,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
 
   return (
     <div className="cards">
-      <form ref={ref} onSubmit={handleSubmit} action="">
+      <form ref={ref} onSubmit={handleSubmit}>
         <input type="text" name="AnimeName" placeholder="Nome do Anime" />
         <input type="text" name="where" placeholder="Onde Assistiu?" />
         <input type="text" name="Rating" placeholder="Nota pro Anime" />

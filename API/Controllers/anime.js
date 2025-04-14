@@ -43,6 +43,7 @@ export const updateAnime = (req, res) => {
 
   db.query(q, [...values, req.params.id], (err) => {
     if (err) return res.json(err);
+
     return res.status(200).json("Anime atualizado com sucesso.");
   });
 };

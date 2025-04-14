@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [animes, setAnimes] = useState([]);
-  //const [onEdit, setOnEdit] = useState(null);
+  const [onEdit, setOnEdit] = useState(null);
 
   const getAnimes = async () => {
     try {
@@ -29,8 +29,16 @@ function App() {
     <>
       <Navbar></Navbar>
       <div id="bodyCards">
-        <Card></Card>
-        <Grid animes={animes}></Grid>
+        <Card
+          onEdit={onEdit}
+          setOnEdit={setOnEdit}
+          getAnimes={getAnimes}
+        ></Card>
+        <Grid
+          setOnEdit={setOnEdit}
+          animes={animes}
+          setAnimes={setAnimes}
+        ></Grid>
         <ToastContainer autoClose={3000} position={toast} />
       </div>
     </>

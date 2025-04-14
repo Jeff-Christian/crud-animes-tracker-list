@@ -1,14 +1,43 @@
-//import axios from "axios";
+//import { toast } from "react-toastify";
+import axios from "axios";
 
-function Grid({ animes }) {
+function Grid({ animes, setAnimes, setOnEdit }) {
+  const handleEdit = (item) => {
+    setOnEdit(item);
+    // Set the anime to be edited in the parent component
+  };
+
+  const handleDelete = async (id) => {
+    await axios
+      .delete("http://localhost:8800/" + id)
+      .then(({ data }) => {
+        // Remove the deleted anime from the state
+        // Filter out the deleted anime from the animes array
+        const newArray = animes.filter((anime) => anime.id !== id);
+
+        setAnimes(newArray);
+        alert(data);
+      })
+      .catch(({ data }) => alert(data));
+
+    setOnEdit(null);
+  };
+
   return (
     <div id="bodyCards">
       {animes.map((anime, i) => (
         <div className="cards" key={i}>
           <div className="image">
             <div className="changes">
-              <button>editar</button>
-              <button>excluir</button>
+              <button
+                onClick={() => {
+                  handleEdit(anime), window.scrollTo(0, 0);
+                  // Scroll to the top of the page when editing
+                }}
+              >
+                editar
+              </button>
+              <button onClick={() => handleDelete(anime.id)}>excluir</button>
             </div>
           </div>
           <div>
