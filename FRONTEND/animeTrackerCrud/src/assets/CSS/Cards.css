@@ -18,14 +18,28 @@ form {
   justify-content: space-evenly;
 }
 
+#cardForm {
+  width: 1500px;
+  max-width: 1500px;
+  margin-top: 1em;
+  margin-top: 20px;
+  height: 456px;
+  background: linear-gradient(#5d5bcf, #2f2e69);
+  border-radius: 10px;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+}
+
 input {
-  width: 390px;
-  height: 40px;
+  width: 700px;
+  height: 50px;
   border-radius: 10px;
   border: none;
   padding: 10px;
   margin: 10px;
-  background: linear-gradient(#5d5bcf, #2f2e69);
+  /*background: linear-gradient(#5d5bcf, #2f2e69);*/
   opacity: 0.8;
   color: white;
 }
@@ -37,7 +51,7 @@ input::placeholder {
 }
 
 #publish {
-  width: 166px;
+  width: 200px;
   margin: 20px;
   height: 36px;
   background: linear-gradient(#4d40ff, #2e2699);

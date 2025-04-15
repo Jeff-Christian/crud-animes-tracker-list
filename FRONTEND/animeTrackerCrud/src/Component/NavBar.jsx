@@ -1,6 +1,9 @@
 import "../assets/CSS/NavBar.css";
 import logo from "../assets/Images/LOGO BRANCO.png";
 
+//import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Navbar() {
   return (
     <>

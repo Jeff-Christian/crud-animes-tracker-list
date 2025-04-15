@@ -62,7 +62,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
   };
 
   return (
-    <div className="cards">
+    <div id="cardForm">
       <form ref={ref} onSubmit={handleSubmit}>
         <input type="text" name="AnimeName" placeholder="Nome do Anime" />
         <input type="text" name="where" placeholder="Onde Assistiu?" />

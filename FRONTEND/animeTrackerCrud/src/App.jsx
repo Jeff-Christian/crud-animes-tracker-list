@@ -1,4 +1,5 @@
 import "./App.css";
+import "../src/assets/CSS/NavBar.css";
 import Navbar from "./Component/NavBar.jsx";
 import Card from "./Component/card.jsx";
 import Grid from "./Component/CardGrid.jsx";
@@ -17,7 +18,7 @@ function App() {
       const res = await axios.get("http://localhost:8800");
       setAnimes(res.data.sort((a, b) => (a.AnimeName > b.AnimeName ? 1 : -1)));
     } catch (error) {
-      toast.error("Error fetching data:", error);
+      alert("Error fetching data:", error);
     }
   };
 
@@ -28,12 +29,10 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
+
+      <Card onEdit={onEdit} setOnEdit={setOnEdit} getAnimes={getAnimes}></Card>
+
       <div id="bodyCards">
-        <Card
-          onEdit={onEdit}
-          setOnEdit={setOnEdit}
-          getAnimes={getAnimes}
-        ></Card>
         <Grid
           setOnEdit={setOnEdit}
           animes={animes}
