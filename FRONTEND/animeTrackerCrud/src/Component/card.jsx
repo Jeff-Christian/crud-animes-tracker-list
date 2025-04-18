@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import axios from "axios";
 //import { toast } from "react-toastify";
-import "../assets/CSS/Cards.css";
+import "../Component/CSS/Cards.css";
 
 function Card({ getAnimes, onEdit, setOnEdit }) {
   const ref = useRef();

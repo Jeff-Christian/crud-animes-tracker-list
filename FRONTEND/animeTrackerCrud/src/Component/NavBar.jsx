@@ -1,4 +1,5 @@
-import "../assets/CSS/NavBar.css";
+import React from "react";
+import "../Component/CSS/Navbar.css";
 import logo from "../assets/Images/LOGO BRANCO.png";
 
 //import { toast } from "react-toastify";
