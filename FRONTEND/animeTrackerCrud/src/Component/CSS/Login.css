@@ -1,0 +1,64 @@
+.box {
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 1500px;
+}
+
+.box p {
+  color: #fff;
+  font-weight: 500;
+}
+
+.formLogin {
+  width: 520px;
+  height: 475px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  align-items: center;
+  background: linear-gradient(#4d40ff, #2e2699);
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.formLogin input {
+  width: 452px;
+  height: 62px;
+}
+
+.login {
+  width: 452px;
+  height: 62px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 20px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(#4d40ff, #2e2699);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.newaccount {
+  width: 200px;
+  height: 70px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 20px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(#4d40ff, #2e2699);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.formLogin button:hover {
+  border-color: #646cff;
+}
