@@ -45,6 +45,11 @@
   transition: border-color 0.25s;
 }
 
+.login:hover {
+  border-color: #4d40ff;
+  background: linear-gradient(#5351ba, #252554);
+}
+
 .newaccount {
   width: 200px;
   height: 70px;
@@ -57,6 +62,11 @@
   background: linear-gradient(#4d40ff, #2e2699);
   cursor: pointer;
   transition: border-color 0.25s;
+}
+
+.newaccount:hover {
+  border-color: #4d40ff;
+  background: linear-gradient(#5351ba, #252554);
 }
 
 .formLogin button:hover {

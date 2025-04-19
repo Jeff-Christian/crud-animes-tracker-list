@@ -60,6 +60,11 @@ input::placeholder {
   cursor: pointer;
 }
 
+#publish:hover {
+  background: linear-gradient(#4d40ff, #2e2699);
+  border: 1px solid #4d40ff;
+}
+
 .image {
   width: 390px;
   height: 212px;

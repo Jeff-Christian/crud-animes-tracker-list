@@ -1,0 +1,55 @@
+.logo {
+  width: 220px;
+  height: 184px;
+}
+
+.formRegister {
+  width: 460px;
+  height: 612px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  align-items: center;
+  background: linear-gradient(#4d40ff, #2e2699);
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.formRegister input {
+  width: 405px;
+  height: 45px;
+}
+
+.formRegister p {
+  max-width: 390px;
+}
+
+.containerRegister {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register {
+  width: 195px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(#4d40ff, #2e2699);
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.register:hover {
+  border-color: #4d40ff;
+  background: linear-gradient(#5351ba, #252554);
+}
