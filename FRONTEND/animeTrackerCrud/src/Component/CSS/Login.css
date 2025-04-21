@@ -52,7 +52,6 @@
 
 .newaccount {
   width: 200px;
-  height: 70px;
   border-radius: 10px;
   border: 1px solid transparent;
   padding: 20px;
@@ -67,6 +66,7 @@
 .newaccount:hover {
   border-color: #4d40ff;
   background: linear-gradient(#5351ba, #252554);
+  color: #fff;
 }
 
 .formLogin button:hover {

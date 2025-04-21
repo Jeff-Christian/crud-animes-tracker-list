@@ -1,6 +1,7 @@
 import React from "react";
 import "../CSS/Login.css";
 import logo from "../../assets/Images/LOGO BRANCO.png";
+import { Link } from "react-router-dom";
 
 function Login() {
   return (
@@ -21,9 +22,9 @@ function Login() {
             <button type="submit" className="login">
               Entrar
             </button>
-            <button type="submit" className="newaccount">
+            <Link to="/register" className="newaccount">
               Criar nova conta
-            </button>
+            </Link>
           </form>
         </div>
       </div>
