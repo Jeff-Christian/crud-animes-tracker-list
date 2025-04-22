@@ -3,7 +3,8 @@ import logo from "../../assets/Images/LOGO BRANCO.png";
 import Login from "./Login";
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import axios from "axios";
 
 function Register() {
   const [values, setValues] = useState({
@@ -14,6 +15,19 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    axios
+      .post("http://localhost:8081/register", values)
+      .then((res) => {
+        if (res.data.success) {
+          // Aqui você pode adicionar a lógica para redirecionar o usuário após o registro bem-sucedido
+          <Navigate to="/login" />;
+          alert(res.data.success);
+        } else {
+          alert(res.data.error);
+        }
+      })
+      .catch((err) => console.log(err));
+    // Aqui você pode adicionar a lógica para enviar os dados para o backend
     console.log(values);
   };
 
