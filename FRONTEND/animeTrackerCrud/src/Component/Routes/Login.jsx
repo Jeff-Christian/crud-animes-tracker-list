@@ -30,8 +30,6 @@ function Login() {
       .catch((err) =>
         console.log("Erro ao fazer login, tente de novo fi", err)
       );
-    // Aqui você pode adicionar a lógica para enviar os dados para o backend
-    console.log(values);
   };
 
   return (

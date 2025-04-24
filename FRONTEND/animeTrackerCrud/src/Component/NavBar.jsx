@@ -16,18 +16,15 @@ function Navbar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8800/api/users/")
-      .then((res) => {
-        if (res.data.success) {
-          setAuth(true);
-          setName(res.data.name);
-        } else {
-          setAuth(false);
-          setMessage(res.data.message);
-        }
-      })
-      .then((err) => console.log(err));
+    axios.get("http://localhost:8800/api/users/").then((res) => {
+      if (res.data.success) {
+        setAuth(true);
+        setName(res.data.name);
+      } else {
+        setAuth(false);
+        setMessage(res.data.message);
+      }
+    });
   }, []);
 
   const logOut = () => {
