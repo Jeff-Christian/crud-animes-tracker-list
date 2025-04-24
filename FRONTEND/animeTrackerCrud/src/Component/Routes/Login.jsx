@@ -1,9 +1,39 @@
 import React from "react";
 import "../CSS/Login.css";
 import logo from "../../assets/Images/LOGO BRANCO.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 function Login() {
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
+
+  const Login = async (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8800/api/users/login", values)
+      .then((res) => {
+        if (res.data.success) {
+          // Aqui você pode adicionar a lógica para redirecionar o usuário após o registro bem-sucedido
+          alert(res.data.success);
+          navigate("/");
+        } else {
+          alert(res.data.error);
+        }
+      })
+      .catch((err) =>
+        console.log("Erro ao fazer login, tente de novo fi", err)
+      );
+    // Aqui você pode adicionar a lógica para enviar os dados para o backend
+    console.log(values);
+  };
+
   return (
     <>
       <div className="box">
@@ -16,9 +46,23 @@ function Login() {
           </p>
         </div>
         <div>
-          <form action="" className="formLogin">
-            <input type="text" name="email" placeholder="Email" />
-            <input type="text" name="senha" placeholder="Senha" />
+          <form action="" className="formLogin" onSubmit={Login}>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              required
+              onChange={(e) => setValues({ ...values, email: e.target.value })}
+            />
+            <input
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              required
+              onChange={(e) =>
+                setValues({ ...values, password: e.target.value })
+              }
+            />
             <button type="submit" className="login">
               Entrar
             </button>

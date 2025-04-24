@@ -31,7 +31,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
 
     if (onEdit) {
       await axios
-        .put("http://localhost:8800/" + onEdit.id, {
+        .put("http://localhost:8800/api/animes/" + onEdit.id, {
           AnimeName: anime.AnimeName.value,
           where: anime.where.value,
           Rating: anime.Rating.value,
@@ -41,7 +41,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
         .catch(({ data }) => alert(data));
     } else {
       await axios
-        .post("http://localhost:8800/", {
+        .post(" http://localhost:8800/api/animes/", {
           AnimeName: anime.AnimeName.value,
           where: anime.where.value,
           Rating: anime.Rating.value,
@@ -67,7 +67,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
         <input type="text" name="AnimeName" placeholder="Nome do Anime" />
         <input type="text" name="where" placeholder="Onde Assistiu?" />
         <input type="text" name="Rating" placeholder="Nota pro Anime" />
-        <input type="date" name="Date" placeholder="Data" />
+        <input type="text" name="Date" placeholder="Data" />
         <button type="submit" id="publish">
           Publicar
         </button>

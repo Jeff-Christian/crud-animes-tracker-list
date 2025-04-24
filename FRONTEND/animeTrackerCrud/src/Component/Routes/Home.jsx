@@ -15,7 +15,7 @@ function Home() {
 
   const getAnimes = async () => {
     try {
-      const res = await axios.get("http://localhost:8800");
+      const res = await axios.get("http://localhost:8800/api/animes/");
       setAnimes(res.data.sort((a, b) => (a.AnimeName > b.AnimeName ? 1 : -1)));
     } catch (error) {
       alert("Error fetching data:", error);

@@ -9,7 +9,7 @@ function Grid({ animes, setAnimes, setOnEdit }) {
 
   const handleDelete = async (id) => {
     await axios
-      .delete("http://localhost:8800/" + id)
+      .delete("http://localhost:8800/api/animes/" + id)
       .then(({ data }) => {
         // Remove the deleted anime from the state
         // Filter out the deleted anime from the animes array
@@ -25,8 +25,8 @@ function Grid({ animes, setAnimes, setOnEdit }) {
 
   return (
     <div id="bodyCards">
-      {animes.map((anime, i) => (
-        <div className="cards" key={i}>
+      {animes.map((anime) => (
+        <div className="cards" key={anime.id}>
           <div className="image">
             <div className="changes">
               <button

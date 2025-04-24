@@ -3,7 +3,7 @@ import logo from "../../assets/Images/LOGO BRANCO.png";
 import Login from "./Login";
 
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Register() {
@@ -13,14 +13,16 @@ function Register() {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8081/register", values)
+      .post("http://localhost:8800/api/users/register", values)
       .then((res) => {
         if (res.data.success) {
           // Aqui você pode adicionar a lógica para redirecionar o usuário após o registro bem-sucedido
-          <Navigate to="/login" />;
+          navigate("/login");
           alert(res.data.success);
         } else {
           alert(res.data.error);
