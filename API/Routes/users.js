@@ -4,6 +4,7 @@ import {
   login,
   logout,
   validateToken,
+  getUser,
 } from "../Controllers/authController.js";
 import { verifyToken as verifyToken } from "../Middleware/verifyToken.js";
 import { verifyUser } from "../Middleware/verifyUser.js";
@@ -22,6 +23,6 @@ router.get("/logout", (req, res) => {
 router.post("/register", register);
 router.post("/login", login);
 router.get("/logout", logout);
-router.get("/", verifyToken, validateToken);
+router.get("/", verifyToken, validateToken, getUser);
 
 export default router;

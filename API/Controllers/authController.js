@@ -36,13 +36,16 @@ export const login = (req, res) => {
       (err, response) => {
         if (err) return res.json({ error: "Erro ao verificar senha" });
         if (response) {
-          const name = result[0].name;
-          const token = jwt.sign({ name }, "jwt-secret-key", {
+          const user = {
+            id: result[0].id,
+            name: result[0].name,
+            email: result[0].email,
+          };
+          const token = jwt.sign(user, "jwt-secret-key", {
             expiresIn: "1h",
           });
           res.cookie("token", token, {
             httpOnly: true, // Para proteger o cookie contra XSS
-            sameSite: "Lax", // ou "None" com secure: true se estiver em HTTPS
           });
           return res.json({ success: "Login realizado com sucesso" });
         } else {
@@ -59,8 +62,23 @@ export const logout = (req, res) => {
 };
 
 export const validateToken = (req, res, next) => {
+  const user = req.user;
+
   return res.json({
-    success: "Token válido",
-    name: req.name,
+    success: true,
+    message: "Token válido",
+    user,
+  });
+};
+
+export const getUser = (req, res) => {
+  const { id } = req.user;
+  const sql = "SELECT id, name, email FROM users WHERE id = ?";
+  db.query(sql, [id], (err, result) => {
+    if (err) return res.json({ error: "Vixe, deu zica zé" });
+    if (result.length === 0) {
+      return res.json({ error: "Usuário não encontrado" });
+    }
+    return res.json(result[0]);
   });
 };

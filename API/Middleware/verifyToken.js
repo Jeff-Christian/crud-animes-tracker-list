@@ -9,7 +9,7 @@ export const verifyToken = (req, res, next) => {
       if (err) {
         return res.json({ error: "Token inválido" });
       } else {
-        req.user = decoded.name;
+        req.user = decoded;
         next();
       }
     });

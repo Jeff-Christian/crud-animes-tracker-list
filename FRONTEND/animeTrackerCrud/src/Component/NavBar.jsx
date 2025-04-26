@@ -8,24 +8,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Navbar() {
-  const [auth, setAuth] = React.useState(false);
-  const [message, setMessage] = useState("");
-  const [name, setName] = useState("");
+  const [user, setUser] = useState({});
   axios.defaults.withCredentials = true;
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    axios.get("http://localhost:8800/api/users/").then((res) => {
-      if (res.data.success) {
-        setAuth(true);
-        setName(res.data.name);
-      } else {
-        setAuth(false);
-        setMessage(res.data.message);
-      }
-    });
-  }, []);
 
   const logOut = () => {
     axios
@@ -37,17 +23,33 @@ function Navbar() {
       .catch((err) => console.log(err));
   };
 
+  // receber os dados do usuario
+  useEffect(() => {
+    axios
+      .get("http://localhost:8800/api/users/", { withCredentials: true })
+      .then((res) => {
+        if (res.data.success) {
+          setUser(res.data.user); // aqui vem { id, name, email }
+        } else {
+          // se não tiver logado, redireciona pra login
+          window.location.href = "/login";
+        }
+      })
+      .catch(() => {
+        window.location.href = "/login";
+      });
+  }, []);
+
   return (
     <div>
-      {auth ? (
+      {user ? (
         <nav id="Navbar">
           <img src={logo} alt="Logo animes tracker" id="logo" />
           <button className="login" onClick={logOut}>
             Logout
           </button>
-          <p>
-            {name} {message}
-          </p>
+          <button onClick={() => navigate("/user")}>User</button>
+          <p>{user.name}</p>
         </nav>
       ) : (
         <nav id="Navbar">

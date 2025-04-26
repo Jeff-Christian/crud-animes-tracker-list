@@ -8,6 +8,7 @@ import Register from "./Component/Routes/Register.jsx";
 import Login from "./Component/Routes/Login.jsx";
 
 import ProtectedRoute from "./Component/Routes/privateRoute.jsx";
+import User from "./Component/User.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         ></Route>
 
         <Route path="/register" element={<Register />} />
+        <Route path="/user" element={<User />} />
       </Routes>
     </BrowserRouter>
   );
