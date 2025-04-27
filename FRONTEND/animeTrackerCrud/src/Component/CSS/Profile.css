@@ -1,0 +1,17 @@
+.logOut {
+  width: 200px;
+  height: 46px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  margin: 10px;
+}
+
+.logOut:hover {
+  border-color: #646cff;
+}

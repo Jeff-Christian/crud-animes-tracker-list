@@ -1,7 +1,7 @@
 #Navbar {
   background: linear-gradient(#4d40ff, #2e2699);
   max-width: 1500px;
-  height: 200px;
+  height: 85px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,8 +9,8 @@
 }
 
 #logo {
-  width: 240px;
-  height: 200px;
+  width: 102px;
+  height: 85px;
   padding: 1.5em;
 }
 
@@ -40,13 +40,4 @@
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-
-.login:hover {
-  border-color: #646cff;
-}
-
-.login:focus,
-.login:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
