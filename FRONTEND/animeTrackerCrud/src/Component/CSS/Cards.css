@@ -2,13 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 20px;
-  width: 430px;
-  margin: 20px;
-  height: 456px;
+  width: 330px;
+  height: 330px;
   background: linear-gradient(#5d5bcf, #2f2e69);
   border-radius: 10px;
   text-align: center;
+  margin-top: 5px;
 }
 
 form {
@@ -23,12 +22,18 @@ form {
   margin-top: 1em;
   margin-top: 20px;
   height: 456px;
-  background: linear-gradient(#5d5bcf, #2f2e69);
   border-radius: 10px;
   text-align: center;
 
   display: flex;
   justify-content: center;
+}
+
+#bodyCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 5px;
 }
 
 input {
@@ -53,20 +58,21 @@ input::placeholder {
   width: 200px;
   margin: 20px;
   height: 36px;
-  background: linear-gradient(#4d40ff, #2e2699);
+  background: linear-gradient(#5d5bcf, #2f2e69);
   border-radius: 10px;
   border: none;
   cursor: pointer;
 }
 
 #publish:hover {
-  background: linear-gradient(#4d40ff, #2e2699);
-  border: 1px solid #4d40ff;
+  border-color: #1d1a3d;
+  background: linear-gradient(#2f2e69, #5d5bcf);
+  transition: 2s;
 }
 
 .image {
-  width: 390px;
-  height: 212px;
+  width: 300px;
+  height: 150px;
   background-color: #d9d9d9;
   margin-top: 10px;
 }
@@ -79,8 +85,8 @@ input::placeholder {
 }
 
 h3 {
-  width: 390px;
-  height: 40px;
+  width: 300px;
+  height: 30px;
   background: linear-gradient(#4d40ff, #2e2699);
   text-align: center;
   margin: 10px;

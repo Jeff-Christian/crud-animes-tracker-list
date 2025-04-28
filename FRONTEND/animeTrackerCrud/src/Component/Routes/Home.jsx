@@ -69,7 +69,6 @@ function Home() {
             </div>
 
             <div className={toggleState === 2 ? "active-content" : "content"}>
-              <h2>Animes Cadastrados</h2>
               <div id="bodyCards">
                 <Grid
                   setOnEdit={setOnEdit}

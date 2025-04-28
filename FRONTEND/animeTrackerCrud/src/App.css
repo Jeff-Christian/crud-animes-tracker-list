@@ -5,12 +5,6 @@
   text-align: center;
 }
 
-#bodyCards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
 .logo {
   height: 6em;
   padding: 1.5em;
