@@ -1,7 +1,8 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
 
   color-scheme: light dark;
   background-color: #242424;
@@ -18,7 +19,7 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #242424;
+  color: #ffff;
 }
 
 @media (prefers-color-scheme: light) {

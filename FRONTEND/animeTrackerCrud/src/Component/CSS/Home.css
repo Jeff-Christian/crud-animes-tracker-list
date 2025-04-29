@@ -89,8 +89,8 @@
 
 .bloc-tabs {
   position: absolute;
-  top: 145px;
-  padding: 1em;
+  top: 155px;
+  background: #4d40ff;
 }
 
 h2 {

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate, Link } from "react-router-dom";
 
 import "../Component/CSS/Profile.css";
 
@@ -42,7 +42,11 @@ function Profile() {
     <div className="containerProfile">
       <div>
         <div className="profilePicture"></div>
-        <button>iconConfig</button>
+        <button>
+          <Link to="/user" className="editProfile">
+            Editar perfil
+          </Link>
+        </button>
       </div>
       <h1>{user.name}</h1>
       <div className="infospProfile">Aqui vai as informações de usuário</div>
