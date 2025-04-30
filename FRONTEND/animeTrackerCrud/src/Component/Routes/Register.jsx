@@ -11,6 +11,7 @@ function Register() {
     name: "",
     email: "",
     password: "",
+    avatar: "https://assets.pinterest.com/ext/embed.html?id=50454458319747383",
   });
 
   const navigate = useNavigate();

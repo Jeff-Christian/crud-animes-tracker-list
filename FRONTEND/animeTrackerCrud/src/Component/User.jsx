@@ -72,7 +72,10 @@ function User() {
         }
       );
       console.log("Avatar atualizado no banco com sucesso!", response.data);
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+        window.location.reload(); // força refresh na home
+      }, 2000);
     } catch (error) {
       console.log("Erro ao atualizar avatar no backend:", error.message);
     }
@@ -108,9 +111,15 @@ function User() {
             <p>{user.email}</p>
           </div>
 
-          <button onClick={() => sendUrl(url)} className="save">
-            Salvar alterações
-          </button>
+          <div>
+            <button className="save">
+              <Link to="/">Voltar</Link>
+            </button>
+
+            <button onClick={() => sendUrl(url)} className="save">
+              Salvar alterações
+            </button>
+          </div>
         </div>
       </div>
     </>

@@ -41,8 +41,12 @@ function Profile() {
   return (
     <div className="containerProfile">
       <div>
-        <div className="profilePicture">
-          <img src={user.avatar} alt="profile picture" />
+        <div>
+          <img
+            src={user.avatar}
+            className="avatarPhoto"
+            alt="profile picture"
+          />
         </div>
         <button>
           <Link to="/user" className="editProfile">
