@@ -40,6 +40,7 @@ export const login = (req, res) => {
             id: result[0].id,
             name: result[0].name,
             email: result[0].email,
+            avatar: result[0].avatar,
           };
           const token = jwt.sign(user, "jwt-secret-key", {
             expiresIn: "1h",
@@ -73,12 +74,26 @@ export const validateToken = (req, res, next) => {
 
 export const getUser = (req, res) => {
   const { id } = req.user;
-  const sql = "SELECT id, name, email FROM users WHERE id = ?";
+  const sql = "SELECT id, name, email, avatar FROM users WHERE id = ?";
   db.query(sql, [id], (err, result) => {
     if (err) return res.json({ error: "Vixe, deu zica zé" });
     if (result.length === 0) {
       return res.json({ error: "Usuário não encontrado" });
     }
     return res.json(result[0]);
+  });
+};
+
+export const updateProfile = (req, res) => {
+  const { id } = req.user;
+  const { avatarUrl } = req.body; // pega a URL vinda do frontend
+
+  const sql = "UPDATE users SET avatar = ? WHERE id = ?";
+  db.query(sql, [avatarUrl, id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: "Erro ao atualizar avatar." });
+    }
+
+    return res.status(200).json({ message: "Avatar atualizado com sucesso." });
   });
 };

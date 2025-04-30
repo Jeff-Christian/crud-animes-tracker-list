@@ -5,6 +5,7 @@ import {
   logout,
   validateToken,
   getUser,
+  updateProfile,
 } from "../Controllers/authController.js";
 import { verifyToken as verifyToken } from "../Middleware/verifyToken.js";
 import { verifyUser } from "../Middleware/verifyUser.js";
@@ -24,5 +25,6 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/logout", logout);
 router.get("/", verifyToken, validateToken, getUser);
+router.put("/profile", verifyToken, updateProfile);
 
 export default router;

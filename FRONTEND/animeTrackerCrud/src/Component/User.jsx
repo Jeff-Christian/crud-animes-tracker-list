@@ -5,7 +5,7 @@ import logo from "../assets/Images/LOGO BRANCO.png";
 import "../Component/CSS/User.css";
 
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { storage } from "../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -18,28 +18,7 @@ function User() {
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState(null);
 
-  const ImageChange = (e) => {
-    if (e.target.files[0]) {
-      setImage(e.target.files[0]);
-    }
-  };
-
-  const SubmitPhoto = () => {
-    const imageRef = ref(storage, "image");
-    uploadBytes(imageRef, image).then(() => {
-      getDownloadURL(imageRef)
-        .then((url) => {
-          setUrl(url);
-        })
-        .catch((error) => {
-          console.log(error.message, "vixe, deu zica zé, imagem não carregada");
-          setImage(null);
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
-    });
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -52,6 +31,52 @@ function User() {
         }
       });
   }, []);
+
+  console.log(user);
+
+  const ImageChange = (e) => {
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const SubmitPhoto = () => {
+    const userID = user.id;
+    const imageRef = ref(storage, `avatars/${userID}`);
+    uploadBytes(imageRef, image).then(() => {
+      getDownloadURL(imageRef)
+        .then((url) => {
+          setUrl(url);
+          console.log(url);
+        })
+        .catch((error) => {
+          console.log(error.message, "vixe, deu zica zé, imagem não carregada");
+          setImage(null);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
+    });
+  };
+
+  const sendUrl = async (url, token) => {
+    try {
+      const response = await axios.put(
+        "http://localhost:8800/api/users/profile",
+        { avatarUrl: url },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Avatar atualizado no banco com sucesso!", response.data);
+      navigate("/");
+    } catch (error) {
+      console.log("Erro ao atualizar avatar no backend:", error.message);
+    }
+  };
 
   return (
     <>
@@ -83,8 +108,8 @@ function User() {
             <p>{user.email}</p>
           </div>
 
-          <button className="save">
-            <Link to="/">Salvar alterações</Link>
+          <button onClick={() => sendUrl(url)} className="save">
+            Salvar alterações
           </button>
         </div>
       </div>
