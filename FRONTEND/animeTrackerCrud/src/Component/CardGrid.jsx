@@ -1,10 +1,11 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 
-function Grid({ animes, setAnimes, setOnEdit }) {
+function Grid({ animes, setAnimes, setOnEdit, setToggleState }) {
   const handleEdit = (item) => {
     setOnEdit(item);
     // Set the anime to be edited in the parent component
+    setToggleState(1);
   };
 
   const handleDelete = async (id) => {
@@ -30,13 +31,7 @@ function Grid({ animes, setAnimes, setOnEdit }) {
         <div className="cards" key={anime.id}>
           <div className="image">
             <div className="changes">
-              <button
-                onClick={() => {
-                  handleEdit(anime);
-                }}
-              >
-                editar
-              </button>
+              <button onClick={() => handleEdit(anime)}>editar</button>
               <button onClick={() => handleDelete(anime.id)}>excluir</button>
             </div>
           </div>

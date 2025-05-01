@@ -74,7 +74,6 @@ function Home() {
                 onEdit={onEdit}
                 setOnEdit={setOnEdit}
                 getAnimes={getAnimes}
-                toggleState={toggleState}
               ></Card>
             </div>
 
@@ -91,6 +90,7 @@ function Home() {
                   setOnEdit={setOnEdit}
                   animes={currentPosts}
                   setAnimes={setAnimes}
+                  setToggleState={setToggleState}
                 ></Grid>{" "}
               </div>
             </div>
