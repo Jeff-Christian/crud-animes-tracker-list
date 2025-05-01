@@ -3,6 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 
+import { toast } from "react-toastify";
+
 import "../Component/CSS/Profile.css";
 
 function Profile() {
@@ -15,10 +17,10 @@ function Profile() {
     axios
       .get("http://localhost:8800/api/users/logout")
       .then((res) => {
-        alert(res.data.success);
+        toast.success(res.data.success);
         navigate("/login");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err));
   };
 
   // receber os dados do usuario
@@ -48,14 +50,12 @@ function Profile() {
             alt="profile picture"
           />
         </div>
-        <button>
-          <Link to="/user" className="editProfile">
-            Editar perfil
-          </Link>
-        </button>
+        <Link className="editProfile" to="/user">
+          Editar perfil
+        </Link>
       </div>
       <h1>{user.name}</h1>
-      <div className="infospProfile">Aqui vai as informações de usuário</div>
+      <div className="infosProfile"></div>
 
       <div>
         {user ? (

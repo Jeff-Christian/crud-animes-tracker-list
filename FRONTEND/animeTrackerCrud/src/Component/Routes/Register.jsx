@@ -4,14 +4,16 @@ import Login from "./Login";
 
 import React, { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+
 import axios from "axios";
+
+import { toast } from "react-toastify";
 
 function Register() {
   const [values, setValues] = useState({
     name: "",
     email: "",
     password: "",
-    avatar: "https://assets.pinterest.com/ext/embed.html?id=50454458319747383",
   });
 
   const navigate = useNavigate();
@@ -24,9 +26,9 @@ function Register() {
         if (res.data.success) {
           // Aqui você pode adicionar a lógica para redirecionar o usuário após o registro bem-sucedido
           navigate("/login");
-          alert(res.data.success);
+          toast.success(res.data.success);
         } else {
-          alert(res.data.error);
+          toast.error(res.data.error);
         }
       })
       .catch((err) => console.log(err));

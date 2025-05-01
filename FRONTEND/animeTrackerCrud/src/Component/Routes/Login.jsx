@@ -1,9 +1,13 @@
 import React from "react";
 import "../CSS/Login.css";
 import logo from "../../assets/Images/LOGO BRANCO.png";
+
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 import axios from "axios";
+
+import { toast } from "react-toastify";
 
 function Login() {
   const [values, setValues] = useState({
@@ -21,10 +25,10 @@ function Login() {
       .then((res) => {
         if (res.data.success) {
           // Aqui você pode adicionar a lógica para redirecionar o usuário após o registro bem-sucedido
-          alert(res.data.success);
+          toast.success(res.data.success);
           navigate("/");
         } else {
-          alert(res.data.error);
+          toast.error(res.data.error);
         }
       })
       .catch((err) =>

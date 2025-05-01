@@ -75,6 +75,7 @@ input::placeholder {
   height: 150px;
   background-color: #d9d9d9;
   margin-top: 10px;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWFlhKFjAMNnU67i93c_MQgvlMhVG6kjf9ReXMAhGTvg&s&ec=72940545);
 }
 
 .changes {
@@ -82,6 +83,18 @@ input::placeholder {
   justify-content: flex-end;
   gap: 1em;
   padding: 10px;
+}
+
+.changes button {
+  background: #242424;
+  border: none;
+  border-radius: 5px;
+}
+
+.changes button:hover {
+  background: linear-gradient(#5d5bcf, #2f2e69);
+  border: none;
+  border-radius: 5px;
 }
 
 h3 {

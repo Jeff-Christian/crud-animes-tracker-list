@@ -3,6 +3,8 @@ import axios from "axios";
 //import { toast } from "react-toastify";
 import "../Component/CSS/Cards.css";
 
+import { toast } from "react-toastify";
+
 function Card({ getAnimes, onEdit, setOnEdit }) {
   const ref = useRef();
 
@@ -37,18 +39,38 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
           Rating: anime.Rating.value,
           Date: anime.Date.value,
         })
-        .then(({ data }) => alert(data))
-        .catch(({ data }) => alert(data));
+        .then((response) => {
+          console.log(response);
+          toast.success(response.data); // Aqui sim é seguro usar response.data, pois é uma string
+        })
+        .catch((error) => {
+          console.error(error);
+          toast.error(
+            error.response?.data?.message ||
+              error.message ||
+              "Erro ao atualizar anime"
+          );
+        });
     } else {
       await axios
-        .post(" http://localhost:8800/api/animes/", {
+        .post("http://localhost:8800/api/animes/", {
           AnimeName: anime.AnimeName.value,
           where: anime.where.value,
           Rating: anime.Rating.value,
           Date: anime.Date.value,
         })
-        .then(({ data }) => alert(data))
-        .catch(({ data }) => alert(data));
+        .then((response) => {
+          console.log(response);
+          toast.success(response.data); // Aqui sim é seguro usar response.data, pois é uma string
+        })
+        .catch((error) => {
+          console.error(error);
+          toast.error(
+            error.response?.data?.message ||
+              error.message ||
+              "Erro ao Cadastrar anime."
+          );
+        });
     }
 
     anime.AnimeName.value = "";
@@ -67,7 +89,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
         <input type="text" name="AnimeName" placeholder="Nome do Anime" />
         <input type="text" name="where" placeholder="Onde Assistiu?" />
         <input type="text" name="Rating" placeholder="Nota pro Anime" />
-        <input type="text" name="Date" placeholder="Data" />
+        <input type="date" name="Date" placeholder="Data" />
         <button type="submit" id="publish">
           Publicar
         </button>

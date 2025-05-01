@@ -1,4 +1,4 @@
-//import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 function Grid({ animes, setAnimes, setOnEdit }) {
@@ -16,9 +16,10 @@ function Grid({ animes, setAnimes, setOnEdit }) {
         const newArray = animes.filter((anime) => anime.id !== id);
 
         setAnimes(newArray);
-        alert(data);
+        toast.success(data);
+        window.location.reload(); // força refresh na home
       })
-      .catch(({ data }) => alert(data));
+      .catch(({ data }) => toast.error(data));
 
     setOnEdit(null);
   };
@@ -31,8 +32,7 @@ function Grid({ animes, setAnimes, setOnEdit }) {
             <div className="changes">
               <button
                 onClick={() => {
-                  handleEdit(anime), window.scrollTo(0, 0);
-                  // Scroll to the top of the page when editing
+                  handleEdit(anime);
                 }}
               >
                 editar
@@ -42,7 +42,7 @@ function Grid({ animes, setAnimes, setOnEdit }) {
           </div>
           <div>
             <h3>
-              Nome do anime: {anime.AnimeName}
+              {anime.AnimeName}
               {/* Display the title of the anime */}
             </h3>
             <h3>Assisti na: {anime.where}</h3>
@@ -50,7 +50,8 @@ function Grid({ animes, setAnimes, setOnEdit }) {
               Nota: {anime.Rating} {/* Display the type of the anime */}
             </h3>
             <h3>
-              Data: {anime.Date} {/* Display the type of the anime */}
+              Data: {new Date(anime.Date).toLocaleDateString("pt-BR")}{" "}
+              {/* Display the type of the anime */}
             </h3>
           </div>
         </div> // Pass the anime object as a prop to Card

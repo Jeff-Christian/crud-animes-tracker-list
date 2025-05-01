@@ -18,10 +18,10 @@ const ProtectedRoute = ({ children }) => {
         }
         setLoading(false);
       })
-      .catch(() => navigate("/"));
+      .catch(() => navigate("/login"));
   }, [navigate]);
 
-  if (loading) return <Home />;
+  if (loading) return <div>Carregando...</div>;
 
   return children;
 };

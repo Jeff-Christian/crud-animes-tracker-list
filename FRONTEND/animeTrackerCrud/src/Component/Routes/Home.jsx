@@ -8,19 +8,23 @@ import "../CSS/Home.css";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
+import { toast } from "react-toastify";
+import Pagination from "../Pagination.jsx";
 
 function Home() {
   const [animes, setAnimes] = useState([]);
   const [onEdit, setOnEdit] = useState(null);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(6);
 
   const getAnimes = async () => {
     try {
       const res = await axios.get("http://localhost:8800/api/animes/");
       setAnimes(res.data.sort((a, b) => (a.AnimeName > b.AnimeName ? 1 : -1)));
     } catch (error) {
-      alert("Error fetching data:", error);
+      toast.error("Error fetching data:", error);
     }
   };
 
@@ -31,9 +35,12 @@ function Home() {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
-    console.log("testando tab ativa", index);
     setToggleState(index);
   };
+
+  const lastAnimeIndex = currentPage * postsPerPage;
+  const firstAnimeIndex = lastAnimeIndex - postsPerPage;
+  const currentPosts = animes.slice(firstAnimeIndex, lastAnimeIndex);
 
   return (
     <div>
@@ -46,12 +53,14 @@ function Home() {
           <div className="containerActive">
             <div className="bloc-tabs">
               <button
+                id="btn-novo-anime"
                 className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
                 onClick={() => toggleTab(1)}
               >
                 Novo anime
               </button>
               <button
+                id="btn-animes-cadastrados"
                 className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
                 onClick={() => toggleTab(2)}
               >
@@ -65,17 +74,24 @@ function Home() {
                 onEdit={onEdit}
                 setOnEdit={setOnEdit}
                 getAnimes={getAnimes}
+                toggleState={toggleState}
               ></Card>
             </div>
 
             <div className={toggleState === 2 ? "active-content" : "content"}>
+              <Pagination
+                totalPosts={animes.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+                setPostsPerPage={setPostsPerPage}
+              />
               <div id="bodyCards">
                 <Grid
                   setOnEdit={setOnEdit}
-                  animes={animes}
+                  animes={currentPosts}
                   setAnimes={setAnimes}
-                ></Grid>
-                <ToastContainer autoClose={3000} position={toast} />
+                ></Grid>{" "}
               </div>
             </div>
           </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 
+import { toast } from "react-toastify";
+
 import logo from "../assets/Images/LOGO BRANCO.png";
 import "../Component/CSS/User.css";
 
@@ -32,8 +34,6 @@ function User() {
       });
   }, []);
 
-  console.log(user);
-
   const ImageChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
@@ -47,7 +47,7 @@ function User() {
       getDownloadURL(imageRef)
         .then((url) => {
           setUrl(url);
-          console.log(url);
+          toast.success("Imagem carregada com sucesso!");
         })
         .catch((error) => {
           console.log(error.message, "vixe, deu zica zé, imagem não carregada");
@@ -71,12 +71,14 @@ function User() {
           },
         }
       );
+      toast.success("Avatar atualizado com sucesso!");
       console.log("Avatar atualizado no banco com sucesso!", response.data);
       setTimeout(() => {
         navigate("/");
         window.location.reload(); // força refresh na home
       }, 2000);
     } catch (error) {
+      toast.error("Erro ao atualizar avatar.");
       console.log("Erro ao atualizar avatar no backend:", error.message);
     }
   };
@@ -103,7 +105,7 @@ function User() {
 
             <label htmlFor="">Nome</label>
             <div className="nameContainer">
-              <input type="text" value={user.name} />
+              <input value={user.name} />
               <button className="changeAvatar">Change Name</button>
             </div>
 
@@ -112,9 +114,9 @@ function User() {
           </div>
 
           <div>
-            <button className="save">
-              <Link to="/">Voltar</Link>
-            </button>
+            <Link className="save" to="/">
+              Voltar
+            </Link>
 
             <button onClick={() => sendUrl(url)} className="save">
               Salvar alterações

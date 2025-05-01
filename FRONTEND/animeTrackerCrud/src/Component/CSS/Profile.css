@@ -1,3 +1,26 @@
+.editProfile {
+  width: 140px;
+  margin-top: 5px;
+  height: 30px;
+  padding: 10px;
+  background: linear-gradient(#5d5bcf, #2f2e69);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.editProfile:hover {
+  border-color: #1d1a3d;
+  background: linear-gradient(#2f2e69, #5d5bcf);
+  transition: 2s;
+  font-weight: 500;
+}
+
+.infosProfile {
+  width: 300px;
+  height: 345px;
+}
+
 .logOut {
   width: 200px;
   margin: 20px;

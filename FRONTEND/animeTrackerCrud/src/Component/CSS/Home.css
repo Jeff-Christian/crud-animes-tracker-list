@@ -97,3 +97,26 @@ h2 {
   margin: 0px;
   padding: 2em;
 }
+
+.pagination {
+  position: absolute;
+  top: 155px;
+  right: 300px;
+  background: #4d40ff;
+}
+
+.pagination button {
+  background: #242424;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.pagination button.active {
+  background: linear-gradient(#5d5bcf, #2f2e69);
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}

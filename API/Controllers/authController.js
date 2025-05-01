@@ -5,16 +5,23 @@ import jwt from "jsonwebtoken";
 const salt = 10;
 
 export const register = (req, res) => {
-  const sql = "INSERT INTO users (`name`, `email`, `password`) VALUES (?)";
+  const sql =
+    "INSERT INTO users (`name`, `email`, `password`, `avatar`) VALUES (?)";
 
   bcrypt.hash(req.body.password.toString(), salt, (err, hash) => {
     if (err) return res.json({ error: "Error ao criar sua senha" });
 
     // Check if the user already exists
-    const values = [req.body.name, req.body.email, hash];
+    const values = [
+      req.body.name,
+      req.body.email,
+      hash,
+      req.body.avatar ||
+        "https://i.pinimg.com/736x/79/8f/bf/798fbf62ba74a844ceeef90b83c76e59.jpg",
+    ];
 
     db.query(sql, [values], (err, result) => {
-      if (err) return res.json({ error: "Vixe, deu zica zé" });
+      if (err) return res.json({ error: "Não foi possível criar a sua conta" });
       return res.json({ success: "Sua conta foi criada com sucesso" });
     });
   });
