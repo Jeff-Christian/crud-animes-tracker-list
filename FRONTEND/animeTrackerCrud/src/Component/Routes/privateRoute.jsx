@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8800/api/users/")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/users/`)
       .then((res) => {
         if (!res.data.success) {
           navigate("/login");

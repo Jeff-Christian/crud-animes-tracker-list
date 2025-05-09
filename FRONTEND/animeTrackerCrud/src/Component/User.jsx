@@ -24,7 +24,9 @@ function User() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8800/api/users/", { withCredentials: true })
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/users/`, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data.success) {
           setUser(res.data.user); // aqui vem { id, name, email }
@@ -62,7 +64,7 @@ function User() {
   const sendUrl = async (url, token) => {
     try {
       const response = await axios.put(
-        "http://localhost:8800/api/users/profile",
+        `${import.meta.env.VITE_BACKEND_URL}/api/users/profile`,
         { avatarUrl: url },
         {
           headers: {

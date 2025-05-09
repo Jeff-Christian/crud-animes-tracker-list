@@ -10,7 +10,7 @@ function Grid({ animes, setAnimes, setOnEdit, setToggleState }) {
 
   const handleDelete = async (id) => {
     await axios
-      .delete("http://localhost:8800/api/animes/" + id)
+      .delete(`${import.meta.env.VITE_BACKEND_URL}/api/animes/` + id)
       .then(({ data }) => {
         // Remove the deleted anime from the state
         // Filter out the deleted anime from the animes array

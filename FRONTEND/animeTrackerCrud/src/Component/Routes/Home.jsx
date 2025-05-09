@@ -21,7 +21,9 @@ function Home() {
 
   const getAnimes = async () => {
     try {
-      const res = await axios.get("http://localhost:8800/api/animes/");
+      const res = await axios.get(
+        `${import.meta.env.VITE_BACKEND_URL}/api/animes/`
+      );
       setAnimes(res.data.sort((a, b) => (a.AnimeName > b.AnimeName ? 1 : -1)));
     } catch (error) {
       toast.error("Error fetching data:", error);

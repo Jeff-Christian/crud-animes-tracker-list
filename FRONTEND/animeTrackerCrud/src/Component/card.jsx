@@ -33,7 +33,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
 
     if (onEdit) {
       await axios
-        .put("http://localhost:8800/api/animes/" + onEdit.id, {
+        .put(`${import.meta.env.VITE_BACKEND_URL}/api/animes/` + onEdit.id, {
           AnimeName: anime.AnimeName.value,
           where: anime.where.value,
           Rating: anime.Rating.value,
@@ -53,7 +53,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
         });
     } else {
       await axios
-        .post("http://localhost:8800/api/animes/", {
+        .post(`${import.meta.env.VITE_BACKEND_URL}/api/animes/`, {
           AnimeName: anime.AnimeName.value,
           where: anime.where.value,
           Rating: anime.Rating.value,
@@ -61,7 +61,7 @@ function Card({ getAnimes, onEdit, setOnEdit }) {
         })
         .then((response) => {
           console.log(response);
-          toast.success(response.data); // Aqui sim é seguro usar response.data, pois é uma string
+          toast.success(response.data);
         })
         .catch((error) => {
           console.error(error);

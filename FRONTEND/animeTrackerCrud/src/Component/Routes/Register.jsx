@@ -21,7 +21,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8800/api/users/register", values)
+      .post(`${import.meta.env.VITE_BACKEND_URL}/api/users/register`, values)
       .then((res) => {
         if (res.data.success) {
           // Aqui você pode adicionar a lógica para redirecionar o usuário após o registro bem-sucedido

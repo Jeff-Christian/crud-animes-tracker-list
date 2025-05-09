@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+
 import { useEffect, useState } from "react";
 import { useNavigate, Navigate, Link } from "react-router-dom";
 
@@ -15,7 +16,7 @@ function Profile() {
 
   const logOut = () => {
     axios
-      .get("http://localhost:8800/api/users/logout")
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/users/logout`)
       .then((res) => {
         toast.success(res.data.success);
         navigate("/login");
@@ -26,7 +27,9 @@ function Profile() {
   // receber os dados do usuario
   useEffect(() => {
     axios
-      .get("http://localhost:8800/api/users/", { withCredentials: true })
+      .get(`${import.meta.env.VITE_BACKEND_URL}/api/users/`, {
+        withCredentials: true,
+      })
       .then((res) => {
         if (res.data.success) {
           setUser(res.data.user); // aqui vem { id, name, email }
