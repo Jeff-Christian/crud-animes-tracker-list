@@ -26,5 +26,5 @@ app.get("/", (req, res) => {
 
 // Database connection
 app.listen(8800, () => {
-  console.log("Server is running on port 8800", "fdp vai funcionaaa");
+  console.log("Server is running on port 8800");
 });
