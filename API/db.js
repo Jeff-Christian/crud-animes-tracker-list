@@ -7,4 +7,4 @@ const urlDB = `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${p
 
 export const db = mysql.createConnection(urlDB);
 
-module.exports = db; // Export the connection object
+//module.exports = db; // Export the connection object
